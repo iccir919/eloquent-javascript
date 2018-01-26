@@ -63,3 +63,38 @@ function hasKnownMother(person){
 console.log(average(ancestry.filter(hasKnownMother).map(function(person){
     return person.born - byName[person.mother].born;
 })));
+
+var centuryGroups = {};
+ancestry.forEach(function(person){
+    var century = Math.ceil(person.died / 100);
+    if(centuryGroups[century]) {
+        centuryGroups[century].push(person)
+    } else {
+        centuryGroups[century] = [person];
+    }
+})
+
+for(var century in centuryGroups) {
+    var groupAges = centuryGroups[century].map(function(person){
+        return person.died - person.born;
+    })
+    centuryGroups[century] = average(groupAges)
+    console.log(century + ": " + centuryGroups[century])
+}
+
+function every(arr, func) {
+    for (var i = 0; i < arr.length; i++) {
+      if( !func(arr[i]) ){
+          return false;
+      }
+    }
+    return true;
+  }
+  
+  function some(arr, func) {
+    for (var i = 0; i < arr.length; i++) {
+        if( func(arr[i]) ) return true
+    }
+    return false;
+  }
+
