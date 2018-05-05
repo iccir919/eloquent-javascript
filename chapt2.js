@@ -83,4 +83,5 @@ for (let y = 0; y < size; y++) {
 console.log(board);
 Notes:
 + use of outer index reduces code repetition
+
 */
