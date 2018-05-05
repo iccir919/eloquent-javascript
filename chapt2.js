@@ -48,3 +48,43 @@ function chessBoard(){
     }
     return string;
 }
+/*
+//////////////// BOOK SOLUTIONS ////////////////////
+
+Looping A Triangle
+for (let line = "#"; line.length < 8; line += "#")
+  console.log(line);
+Notes: 
+- for loop vs while loop
+
+FizzBuzz
+for (let n = 1; n <= 100; n++) {
+  let output = "";
+  if (n % 3 == 0) output += "Fizz";
+  if (n % 5 == 0) output += "Buzz";
+  console.log(output || n);
+}
+Notes:
++ more clean and compact
++ efficient use of OR operator
+
+Chessboard
+let size = 8;
+
+let board = "";
+
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    if ((x + y) % 2 == 0) {
+      board += " ";
+    } else {
+      board += "#";
+    }
+  }
+  board += "\n";
+}
+
+console.log(board);
+Notes:
++ use of outer index reduces code repetition
+*/
