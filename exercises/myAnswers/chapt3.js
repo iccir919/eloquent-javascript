@@ -32,7 +32,7 @@ console.log(isEven(75));
 console.log(isEven(-1));
 // → ??
 
-let countBs = (str) => countChar(str, "B")
+let countBs = (str) => countChar(str, "B");
 
 let countChar = (str, char) => {
     let count = 0;
