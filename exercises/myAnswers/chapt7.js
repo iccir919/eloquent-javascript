@@ -241,3 +241,46 @@ function efficiencyOrientedRobot({ place, parcels }, route) {
 }
 
 compareRobots(efficiencyOrientedRobot, [], goalOrientedRobot, []);
+
+class PGroup {
+  constructor(group) {
+    this.group = group;
+  }
+
+  add(value) {
+    let index = this.group.indexOf(value);
+    if (index === -1) {
+      let newState = this.group.concat(value);
+      return new PGroup(newState);
+    } else {
+      return this;
+    }
+  }
+  has(value) {
+    return this.group.indexOf(value) !== -1;
+  }
+  delete(value) {
+    let index = this.group.indexOf(value);
+    if (index !== -1) {
+      let newState = this.group
+        .slice(0, index)
+        .concat(this.group.slice(index + 1, this.group.length));
+      return new PGroup(newState);
+    } else {
+      return this;
+    }
+  }
+}
+
+PGroup.empty = new PGroup(new Array());
+
+let a = PGroup.empty.add("a");
+let ab = a.add("b");
+let b = ab.delete("a");
+
+console.log(b.has("b"));
+// → true
+console.log(a.has("b"));
+// → false
+console.log(b.has("a"));
+// → false
