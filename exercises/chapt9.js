@@ -1,17 +1,32 @@
-verify(/.../, ["my car", "bad cats"], ["camper", "high art"]);
+// car and cat
+verify(/(cat)|(car)/, ["my car", "bad cats"], ["camper", "high art"]);
 
-verify(/.../, ["pop culture", "mad props"], ["plop", "prrrop"]);
+// pop and prop
+verify(/pr?op/, ["pop culture", "mad props"], ["plop", "prrrop"]);
 
-verify(/.../, ["ferret", "ferry", "ferrari"], ["ferrum", "transfer A"]);
-
-verify(/.../, ["how delicious", "spacious room"], ["ruinous", "consciousness"]);
-
-verify(/.../, ["bad punctuation ."], ["escape the period"]);
-
-verify(/.../, ["hottentottententen"], ["no", "hotten totten tenten"]);
-
+// ferret, ferry, and ferrari
 verify(
-  /.../,
+  /ferr(y|ari|et)/,
+  ["ferret", "ferry", "ferrari"],
+  ["ferrum", "transfer A"]
+);
+
+// Any word ending in ious
+verify(
+  /\w+ious\b/,
+  ["how delicious", "spacious room"],
+  ["ruinous", "consciousness"]
+);
+
+// A whitespace character followed by a period, comma, colon, or semicolon
+verify(/ (\.|,|:|;)/, ["bad punctuation ."], ["escape the period"]);
+
+// A word longer than six letters
+verify(/\w{7}/, ["hottentottententen"], ["no", "hotten totten tenten"]);
+
+// A word without the letter e (or E)
+verify(
+  /\b[^\We]+\b/i,
   ["red platypus", "wobbling nest"],
   ["earth bed", "learning ape", "BEET"]
 );
@@ -28,3 +43,8 @@ function verify(regexp, yes, no) {
       console.log(`Unexpected match for '${str}'`);
     }
 }
+
+let text = "'I'm the cook,' he said, 'it's my job.'";
+// Change this call.
+console.log(text.replace(/(^|\W)'|'(\W|$)/g, '$1"$2'));
+// → "I'm the cook," he said, "it's my job."
