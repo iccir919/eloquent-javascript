@@ -2,7 +2,7 @@
 Accepts an array of two-element arrays, returns graph object
 */
 
-function buildGraph(array) {
+function buildGraph(edges) {
   let graph = Object.create(null);
   function addEdge(from, to) {
     if (graph[from] == null) {
@@ -11,7 +11,7 @@ function buildGraph(array) {
       graph[from].push(to);
     }
   }
-  for (let [from, to] of array) {
+  for (let [from, to] of edges.map(r => r.split("-"))) {
     addEdge(from, to);
     addEdge(to, from);
   }
