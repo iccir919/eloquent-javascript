@@ -3,7 +3,7 @@ Write an expression that matches only JavaScript-style numbers. It must support 
 */
 
 // Fill in this regular expression.
-let number = /^...$/;
+let number = /^[+\-]?(\d+ (\.\d*)?|\.\d+)([eE][+\-]?\d+)?$/;
 
 // Tests:
 for (let str of [

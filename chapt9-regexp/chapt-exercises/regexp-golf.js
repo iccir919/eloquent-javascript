@@ -41,20 +41,28 @@ Refer to the table below for help. Test each solution with a few test strings.
 
 // Fill in the regular expressions
 
-verify(/.../, ["my car", "bad cats"], ["camper", "high art"]);
+verify(/ca(r|t)+/, ["my car", "bad cats"], ["camper", "high art"]);
 
-verify(/.../, ["pop culture", "mad props"], ["plop", "prrrop"]);
-
-verify(/.../, ["ferret", "ferry", "ferrari"], ["ferrum", "transfer A"]);
-
-verify(/.../, ["how delicious", "spacious room"], ["ruinous", "consciousness"]);
-
-verify(/.../, ["bad punctuation ."], ["escape the period"]);
-
-verify(/.../, ["hottentottententen"], ["no", "hotten totten tenten"]);
+verify(/pr?op/, ["pop culture", "mad props"], ["plop", "prrrop"]);
 
 verify(
-  /.../,
+  /ferr(et|y|ari)/,
+  ["ferret", "ferry", "ferrari"],
+  ["ferrum", "transfer A"]
+);
+
+verify(
+  /ious\b/,
+  ["how delicious", "spacious room"],
+  ["ruinous", "consciousness"]
+);
+
+verify(/\s[.,;:]/, ["bad punctuation ."], ["escape the period"]);
+
+verify(/\w{7}/, ["hottentottententen"], ["no", "hotten totten tenten"]);
+
+verify(
+  /\b[^\We]+\b/i,
   ["red platypus", "wobbling nest"],
   ["earth bed", "learning ape", "BEET"]
 );

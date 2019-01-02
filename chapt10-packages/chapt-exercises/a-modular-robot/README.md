@@ -1,5 +1,7 @@
 # A modular robot
 
+## Prompt
+
 These are the bindings that the project from Chapter 7 creates:
 
 roads

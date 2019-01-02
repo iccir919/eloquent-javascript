@@ -13,6 +13,8 @@ function storage(nest, name) {
   });
 }
 
+// storage(bigOak, "enemies").then(value => console.log("Got", value));
+
 var Timeout = class Timeout extends Error {};
 
 function request(nest, target, type, content) {
@@ -172,14 +174,4 @@ var Group = class Group {
 function anyStorage(nest, source, name) {
   if (source == nest.name) return storage(nest, name);
   else return routeRequest(nest, source, "storage", name);
-}
-
-async function chicks(nest, year) {
-  let list = "";
-  await Promise.all(
-    network(nest).map(async name => {
-      list += `${name}: ${await anyStorage(nest, name, `chicks in ${year}`)}\n`;
-    })
-  );
-  return list;
 }
