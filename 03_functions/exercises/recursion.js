@@ -18,13 +18,9 @@
 function isEven(val) {
     if (val < 0) val *= -1;
     
-    if (val === 0) {
-        return true;
-    } else if (val === 1) {
-        return false;
-    } else {
-        return isEven(val - 2);
-    }
+    if (val === 0) return true;
+    else if (val === 1) return false;
+    else return isEven(val - 2);
 }
 
 console.log(isEven(50));

@@ -19,14 +19,14 @@
 
 const size = 8;
 for (let i = 0; i < size; i++) {
-    let result = ""
+    let board = ""
     for (let j = 0; j < size; j++) {
-
         if (j % 2 === 0) {
             result += i % 2 === 0 ? " " : "#";
         } else {
             result += i % 2 === 0 ? "#" : " ";
         }
     }
-    console.log(result);
+    board += "\n";
 }
+console.log(board)
