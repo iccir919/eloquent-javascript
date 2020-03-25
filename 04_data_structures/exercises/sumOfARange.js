@@ -15,7 +15,17 @@
     Make sure it also works with negative step values so that range(5, 2, -1) produces [5, 4, 3, 2].
 */
 
-// Your code here.
+function range(start, end, step = 1) {
+    let result = [];
+    for (let i = start; step > 0 ? i <= end : i >= end; i += step) {
+        result.push(i);
+    }
+    return result;
+}
+
+function sum(arr) {
+    return arr.reduce((accum, val) => accum + val);
+}
 
 console.log(range(1, 10));
 // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

@@ -16,7 +16,22 @@
     of objects to compare them.
 */
 
-// Your code here.
+function deepEqual(val1, val2) {
+    if (
+        val1 !== null && typeof val1 === "object" && 
+        val2 !== null && typeof val2 === "object" 
+    ) {
+        if (Object.keys(val1).length === Object.keys(val2).length) {
+            for (let prop in val1) {
+                return deepEqual(val1[prop], val2[prop])
+            }
+        } else {
+            return false
+        }
+    } 
+    else if (val1 !== val2) return false
+    else return true;
+}
 
 let obj = {here: {is: "an"}, object: 2};
 console.log(deepEqual(obj, obj));

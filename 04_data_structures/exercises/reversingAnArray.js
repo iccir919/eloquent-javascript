@@ -10,7 +10,22 @@
     which variant do you expect to be useful in more situations? Which one runs faster?
 */
 
-// Your code here.
+function reverseArray(arr) {
+    let result = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        result.push(arr[i]);
+    }
+    return result;
+}
+
+function reverseArrayInPlace(arr) {
+    for (let i = 0; i < arr.length / 2; i++) {
+        let temp = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = arr[i];
+        arr[i] = temp;
+    }
+    return arr;
+}
 
 console.log(reverseArray(["A", "B", "C"]));
 // → ["C", "B", "A"];
