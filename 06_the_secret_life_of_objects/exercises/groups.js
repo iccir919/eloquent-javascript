@@ -19,7 +19,29 @@
 */
 
 class Group {
-// Your code here.
+    constructor() {
+        this.group = [];
+    }
+
+    add(val) {
+        if (this.group.indexOf(val) === -1) this.group.push(val);
+    }
+
+    delete(val) {
+        this.group = this.group.filter((el) => el !== val);
+    }
+
+    has(val) {
+        return this.group.indexOf(val) !== -1;
+    }
+
+    static from(iterable) {
+        let group = new Group();
+        for(let val of iterable) {
+            group.add(val);
+        }
+        return group;
+    }
 }
 
 let group = Group.from([10, 20]);
