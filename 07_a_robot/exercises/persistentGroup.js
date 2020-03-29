@@ -23,8 +23,24 @@
 */
 
 class PGroup {
-    // Your code here
+    constructor(values=[]) {
+        this.values = values;
+    }
+
+    add(value) {
+        return new PGroup(this.values.slice().concat(value));
+    }
+
+    delete(value) {
+        return new PGroup(this.values.filter((element) => value !== element))
+    }
+
+    has(value) {
+        return this.values.includes(value);
+    }
 }
+
+PGroup.empty = new PGroup();
 
 let a = PGroup.empty.add("a");
 let ab = a.add("b");
