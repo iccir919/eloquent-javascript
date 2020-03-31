@@ -36,7 +36,13 @@ const box = {
   };
   
 function withBoxUnlocked(body) {
-// Your code here.
+    let lockedAtBeginning = box.locked;
+    box.unlock();
+    try {
+        body()
+    } finally {
+      if (lockedAtBeginning) box.lock();
+    }
 }
 
 withBoxUnlocked(function() {
