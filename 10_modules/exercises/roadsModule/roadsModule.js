@@ -5,7 +5,7 @@
     This function expects an array of two-element arrays (the start and end points of the roads).
 */
 
-// Add dependencies and exports
+const {buildGraph} = require("./graph");
 
 const roads = [
     "Alice's House-Bob's House",   "Alice's House-Cabin",
@@ -15,4 +15,6 @@ const roads = [
     "Grete's House-Shop",          "Marketplace-Farm",
     "Marketplace-Post Office",     "Marketplace-Shop",
     "Marketplace-Town Hall",       "Shop-Town Hall"
-  ];
+];
+
+module.exports = buildGraph(roads.map(r => r.split("-")));
