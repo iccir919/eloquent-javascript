@@ -1,4 +1,4 @@
-exports.buildGraph = function(array) {
+module.exports.buildGraph = function(array) {
     let graph = Object.create(null);
     function addEdge(from, to) {
         if (graph[from] == null) {

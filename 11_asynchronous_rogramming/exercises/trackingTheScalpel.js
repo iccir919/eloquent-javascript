@@ -19,6 +19,20 @@
     versions? How?
 */
 
+const {bigOak} = require("../chapter/crow-tech");
+
+bigOak.readStorage("food caches", caches => {
+    let firstCache = caches[0];
+    bigOak.readStorage(firstCache, info => {
+      console.log(info);
+    });
+});
+
+function anyStorage(nest, source, name) {
+    if (source == nest.name) return storage(nest, name);
+    else return routeRequest(nest, source, "storage", name);
+}
+
 async function locateScalpel(nest) {
     // Your code here.
 }
