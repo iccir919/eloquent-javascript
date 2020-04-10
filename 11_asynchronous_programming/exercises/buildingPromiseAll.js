@@ -12,9 +12,22 @@
 */
 
 function Promise_all(promises) {
-    return new Promise((resolve, reject) => {
-      // Your code here.
-    });
+  return new Promise((resolve, reject) => {
+    let result = new Array(promises.length);
+    let counter = promises.length;
+    
+    if (counter === 0) resolve(promises);
+    
+    promises.map((promise, idx) => {
+    	promise
+        .then((val) => {
+        	result[idx] = val;
+          	counter--;
+          	if (counter === 0) resolve(result);
+        })
+      	.catch(reason => reject(reason));
+    })
+  });
 }
   
 // Test code.

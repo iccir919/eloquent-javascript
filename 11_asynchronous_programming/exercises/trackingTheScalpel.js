@@ -31,8 +31,19 @@ async function locateScalpel(nest) {
 }
 
 function locateScalpel2(nest) {
-    // Your code here.
-}
+    let test = 0;
+    function search(nestName) {
+        return anyStorage(bigOak, nestName, "scalpel")
+      .then((scalpelLocation) => {
+          if (scalpelLocation === nestName) return scalpelLocation;
+            else return search(scalpelLocation);
+      })
+      .catch(reason => {
+    	return "Caught failure " + reason
+      });
+    }
+    return search(nest.name)
+  }
 
 locateScalpel(bigOak).then(console.log);
 // → Butcher Shop
