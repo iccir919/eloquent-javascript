@@ -19,22 +19,15 @@
     versions? How?
 */
 
-const {bigOak} = require("../chapter/crow-tech");
-
-bigOak.readStorage("food caches", caches => {
-    let firstCache = caches[0];
-    bigOak.readStorage(firstCache, info => {
-      console.log(info);
-    });
-});
-
-function anyStorage(nest, source, name) {
-    if (source == nest.name) return storage(nest, name);
-    else return routeRequest(nest, source, "storage", name);
-}
-
 async function locateScalpel(nest) {
-    // Your code here.
+    let currentLocation = nest.name;
+    let scalpelLocation;
+    while (true) {
+      scalpelLocation = await anyStorage(bigOak, currentLocation, "scalpel");
+      if (scalpelLocation === currentLocation) break;
+      else currentLocation = scalpelLocation;
+    }
+    return scalpelLocation;
 }
 
 function locateScalpel2(nest) {
