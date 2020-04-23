@@ -11,6 +11,12 @@
 // load dependencies
 require("../code/load.js")("code/chapter/12_language.js");
   
+function skipSpace(string) {
+    let matches = string.match(/(\#(.*)\r?\n|\s)*/);
+    if (matches === null) return "";
+    return string.slice(matches[0].length);
+}
+
 console.log(parse("# hello\nx"));
 // → {type: "word", name: "x"}
 

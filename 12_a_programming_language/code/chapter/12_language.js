@@ -15,9 +15,9 @@ function parseExpression(program) {
 }
 
 function skipSpace(string) {
-  let matches = string.match(/\#(.*)\r?\n/);
-  if (matches === null) return "";
-  return string.slice(matches[0].length);
+  let first = string.search(/\S/);
+  if (first == -1) return "";
+  return string.slice(first);
 }
 
 function parseApply(expr, program) {
