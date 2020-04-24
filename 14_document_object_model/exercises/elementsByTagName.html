@@ -15,7 +15,19 @@
 
 <script>
   function byTagName(node, tagName) {
-    // Your code here.
+    let result = [];
+
+    function search(node) {
+      if (node.nodeName === tagName.toUpperCase()) result.push(node);
+      const children = node.children;
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          search(children[i]);
+        }
+      }
+    }
+    search(node);
+    return result
   }
 
   console.log(byTagName(document.body, "h1").length);
