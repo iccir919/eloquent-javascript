@@ -13,8 +13,23 @@
     (so that you can’t inflate or deflate the explosion).
 -->
 
-<p>🎈</p>
+<p style="font-size: 16px;">🎈</p>
 
 <script>
-  // Your code here
+  const balloon = document.querySelector("p");
+  window.addEventListener("keydown", event => {
+    event.preventDefault();
+
+    let fontSize = Number(balloon.style.fontSize.slice(0, -2));
+
+    if (fontSize > 150) {
+      balloon.textContent = "💥";
+      return;
+    }
+
+    if (event.key === "ArrowUp") fontSize += (fontSize / 10);
+    if (event.key === "ArrowDown") fontSize -= (fontSize / 10);
+
+    balloon.style.fontSize = `${fontSize}px`;
+  })
 </script>

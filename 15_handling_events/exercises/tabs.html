@@ -19,7 +19,9 @@
 </tab-panel>
 <script>
     function asTabs(node) {
-        // Your code here.
+        let button = document.createElement("button");
+        button.innerText = "button";
+        node.insertBefore(button, node);
     }
     asTabs(document.querySelector("tab-panel"));
 </script>

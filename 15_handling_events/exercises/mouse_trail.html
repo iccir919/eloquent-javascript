@@ -27,5 +27,27 @@
 </style>
 
 <script>
-// Your code here.
+  let mousePositions = [];
+  window.addEventListener("mousemove", event => {
+
+    for (let dot; dot = document.querySelector("dot");) {
+      dot.remove();
+    }
+
+    if (mousePositions.length === 20) mousePositions.pop();
+
+    let position = {};
+    position.x = event.clientX;
+    position.y = event.clientY;
+    mousePositions.unshift(position);
+
+    for(let i = 0; i < mousePositions.length; i++) {
+      let dot = document.createElement("dot");
+      dot.className = "trail";
+      dot.style.left = mousePositions[i].x;
+      dot.style.top = mousePositions[i].y;
+      document.body.appendChild(dot);
+    }
+
+  })
 </script>
