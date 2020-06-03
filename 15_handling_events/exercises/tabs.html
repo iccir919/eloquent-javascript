@@ -19,9 +19,31 @@
 </tab-panel>
 <script>
     function asTabs(node) {
-        let button = document.createElement("button");
-        button.innerText = "button";
-        node.insertBefore(button, node);
+        let tabContainer = document.createElement("tab-container");
+        let tabs = [];
+        for (let i = 0; i < node.children.length; i++) {
+            let tabButton = document.createElement("button");
+            tabButton.innerText = node.children[i].getAttribute("data-tabname");
+            tabButton.value = i;
+            tabButton.addEventListener("click", handleTabSelection)
+            tabContainer.appendChild(tabButton);
+            tabs.push(tabButton);
+        }
+        document.body.insertBefore(tabContainer, node);
+
+        function handleTabSelection(event) {
+            let tabIndex = event.target ? Number(event.target.value) : 0;
+            for (let i = 0; i < node.children.length; i++) {
+                if (i === tabIndex) {
+                    node.children[i].style.display = "block";
+                    tabs[i].style.color = "red";
+                } else {
+                    node.children[i].style.display = "none";
+                    tabs[i].style.color = "black";
+                }
+            }
+        }
+        handleTabSelection(0);
     }
     asTabs(document.querySelector("tab-panel"));
 </script>
